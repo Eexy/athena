@@ -16,10 +16,10 @@ const schema: Schema = new Schema(
   }
 );
 
-interface Todo extends Document {
+interface ITodo extends Document {
   id: string;
   desc: string;
   completed: boolean;
 }
 
-export const Todo: Model<Todo> = mongoose.model("Todo", schema);
+export const Todo: Model<ITodo> = mongoose.model("Todo", schema);

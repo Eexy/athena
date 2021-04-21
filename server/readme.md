@@ -3,13 +3,13 @@
 ## Todo
 - [x] create express server
 - [x] connect to db
-- [ ] create apollo server instance
+- [x] create apollo server instance
 - [ ] models
   - [ ] user
-    - [ ] encrypt password
-    - [ ] fields
-      - [ ] email
-      - [ ] password
+    - [x] encrypt password
+    - [x] fields
+      - [x] email
+      - [x] password
   - [ ] todo
     - [ ] fields
       - [x] completed
@@ -25,5 +25,10 @@
     - [x] get todo
     - [ ] get todos
     - [x] create todo
-    - [ ] delete todo
-    - [ ] update todo
+    - [x] delete todo
+    - [x] update todo status
+  - [ ] user
+    - [ ] register
+    - [ ] login
+    - [ ] me
+    - [ ] delete
