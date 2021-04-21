@@ -30,7 +30,7 @@ export class UserResolver {
       loginResponse.ok = true;
       sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
-      loginResponse.message = e.message;
+      loginResponse.error = e.message;
     }
     return loginResponse;
   }
@@ -65,7 +65,7 @@ export class UserResolver {
     const registerResponse: ConnectResponse = { ok: false };
 
     if (exist) {
-      registerResponse.message = "User already exist";
+      registerResponse.error = "User already exist";
       return registerResponse;
     }
 
@@ -77,9 +77,9 @@ export class UserResolver {
       sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       if (e.message.includes("`password` is required")) {
-        registerResponse.message = "password is required";
+        registerResponse.error = "password is required";
       } else if (e.message.includes("`email` is required")) {
-        registerResponse.message = "email is required";
+        registerResponse.error = "email is required";
       }
     }
 

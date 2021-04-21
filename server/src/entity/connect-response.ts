@@ -6,5 +6,5 @@ export class ConnectResponse {
   ok: boolean = false;
 
   @Field({ nullable: true })
-  message?: string = "";
+  error?: string = "";
 }
