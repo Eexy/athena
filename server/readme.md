@@ -12,9 +12,9 @@
       - [ ] password
   - [ ] todo
     - [ ] fields
-      - [ ] completed
-      - [ ] desc
-      - [ ] timestamp
+      - [x] completed
+      - [x] desc
+      - [x] timestamp
 - [ ] implement JWT
 - [ ] entity
   - [ ] user
