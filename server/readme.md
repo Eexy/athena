@@ -28,7 +28,7 @@
     - [x] delete todo
     - [x] update todo status
   - [ ] user
-    - [ ] register
-    - [ ] login
+    - [x] register
+    - [x] login
     - [ ] me
     - [ ] delete

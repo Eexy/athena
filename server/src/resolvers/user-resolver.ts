@@ -18,7 +18,7 @@ export class UserResolver {
     try {
       const user = await UModel.findUser(email, password);
       loginResponse.ok = true;
-      sendToken(res, generateAuthToken({id: user.id, date: Date.now()}));
+      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       loginResponse.message = e.message;
     }
@@ -29,14 +29,22 @@ export class UserResolver {
   async register(
     @Arg("email") email: string,
     @Arg("password") password: string,
-    @Ctx() {res}: Context
+    @Ctx() { res }: Context
   ): Promise<ConnectResponse> {
-    const user = new UModel({ email, password });
+    const exist = await UModel.findOne({ email });
     const registerResponse: ConnectResponse = { ok: false };
+
+    if (exist) {
+      registerResponse.message = "User already exist";
+      return registerResponse;
+    }
+
+    const user = new UModel({ email, password });
+
     try {
       await user.save();
       registerResponse.ok = true;
-      sendToken(res,generateAuthToken({ id: user.id, date: Date.now() }));
+      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       if (e.message.includes("`password` is required")) {
         registerResponse.message = "password is required";
