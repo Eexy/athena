@@ -2,8 +2,8 @@
 
 ## Todo
 - [x] create express server
-- [ ] connect to db
-- [ ] create apollo server
+- [x] connect to db
+- [ ] create apollo server instance
 - [ ] models
   - [ ] user
     - [ ] encrypt password
