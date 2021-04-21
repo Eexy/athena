@@ -20,18 +20,18 @@
 - [x] entity
   - [x] user
   - [x] todo
-- [ ] resolvers
+- [x] resolvers
   - [x] todo
     - [x] get todo
     - [x] get todos
     - [x] create todo
     - [x] delete todo
     - [x] update todo status
-  - [ ] user
+  - [x] user
     - [x] register
     - [x] login
     - [x] me
     - [x] delete
     - [x] update password
-    - [ ] logout
+    - [x] logout
 - [ ] deploy on heroku

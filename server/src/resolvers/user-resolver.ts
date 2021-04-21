@@ -18,6 +18,18 @@ import mongoose from "mongoose";
 
 @Resolver(User)
 export class UserResolver {
+  @UseMiddleware(auth)
+  @Query((_) => User)
+  async me(@Ctx() { userId }: Context): Promise<User> {
+    const user = await UModel.findById(userId);
+
+    if (!user) {
+      throw new Error("Unable to fetch current user");
+    }
+
+    return user;
+  }
+
   @Mutation((_) => ConnectResponse)
   async login(
     @Arg("email") email: string,
@@ -36,30 +48,33 @@ export class UserResolver {
   }
 
   @UseMiddleware(auth)
-  @Query((_) => User)
-  async me(@Ctx() { userId }: Context): Promise<User> {
+  @Mutation((_) => Boolean)
+  logout(@Ctx() {res}: Context){
+    try{
+      res.clearCookie('jid');
+    }catch(e){
+      throw new Error("Unable to logout");
+    }
+
+    return true;
+  };
+
+  @UseMiddleware(auth)
+  @Mutation((_) => Boolean)
+  async changePassword(
+    @Ctx() { userId }: Context,
+    @Arg("password") password: string
+  ): Promise<Boolean> {
     const user = await UModel.findById(userId);
 
     if (!user) {
       throw new Error("Unable to fetch current user");
     }
 
-    return user;
-  }
-
-  @UseMiddleware(auth)
-  @Mutation((_) => Boolean)
-  async changePassword(@Ctx() { userId}: Context, @Arg("password") password: string): Promise<Boolean> {
-    const user = await UModel.findById(userId);
-
-    if(!user){
-      throw new Error("Unable to fetch current user");
-    }
-
-    try{
-      user.password = password
-      await user.save()
-    }catch(e){
+    try {
+      user.password = password;
+      await user.save();
+    } catch (e) {
       throw new Error("Unable to update password");
     }
 
