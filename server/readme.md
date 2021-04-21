@@ -21,9 +21,9 @@
   - [x] user
   - [x] todo
 - [ ] resolvers
-  - [ ] todo
+  - [x] todo
     - [x] get todo
-    - [ ] get todos
+    - [x] get todos
     - [x] create todo
     - [x] delete todo
     - [x] update todo status
@@ -32,4 +32,6 @@
     - [x] login
     - [x] me
     - [x] delete
-    - [ ] update password
+    - [x] update password
+    - [ ] logout
+- [ ] deploy on heroku

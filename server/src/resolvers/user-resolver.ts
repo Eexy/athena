@@ -49,6 +49,25 @@ export class UserResolver {
 
   @UseMiddleware(auth)
   @Mutation((_) => Boolean)
+  async changePassword(@Ctx() { userId}: Context, @Arg("password") password: string): Promise<Boolean> {
+    const user = await UModel.findById(userId);
+
+    if(!user){
+      throw new Error("Unable to fetch current user");
+    }
+
+    try{
+      user.password = password
+      await user.save()
+    }catch(e){
+      throw new Error("Unable to update password");
+    }
+
+    return true;
+  }
+
+  @UseMiddleware(auth)
+  @Mutation((_) => Boolean)
   async deleteMe(@Ctx() { userId }: Context): Promise<Boolean> {
     await UModel.findByIdAndDelete(userId);
     await TModel.deleteMany({ owner: userId });
