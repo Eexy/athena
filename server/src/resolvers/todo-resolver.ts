@@ -21,6 +21,14 @@ export class TodoResolver {
   }
 
   @UseMiddleware(auth)
+  @Query((_) => [Todo])
+  async todos(@Ctx() {userId}: Context): Promise<Todo[]> {
+    const todos = await TModel.find({owner: userId});
+
+    return todos;
+  }
+
+  @UseMiddleware(auth)
   @Mutation((_) => Todo)
   async createTodo(@Arg("desc") desc: string, @Ctx() {userId} : Context): Promise<Todo> {
     const owner = mongoose.Types.ObjectId(userId)

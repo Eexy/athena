@@ -4,20 +4,20 @@
 - [x] create express server
 - [x] connect to db
 - [x] create apollo server instance
-- [ ] models
-  - [ ] user
+- [x] models
+  - [x] user
     - [x] encrypt password
     - [x] fields
       - [x] email
       - [x] password
-  - [ ] todo
-    - [ ] fields
+  - [x] todo
+    - [x] fields
       - [x] completed
       - [x] desc
       - [x] timestamp
-      - [ ] owner
-- [ ] implement JWT
-- [ ] entity
+      - [x] owner
+- [x] implement JWT
+- [x] entity
   - [x] user
   - [x] todo
 - [ ] resolvers
@@ -32,3 +32,4 @@
     - [x] login
     - [x] me
     - [x] delete
+    - [ ] update password
