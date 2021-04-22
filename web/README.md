@@ -12,6 +12,8 @@
   - [ ] register
 - [ ] components
   - [ ] navbar
+  - [ ] navbar-menu
+    - [ ] change on connect
   - [ ] todo
   - [ ] todolist
 - [ ] configure urql client
