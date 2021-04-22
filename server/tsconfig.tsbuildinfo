@@ -146,11 +146,6 @@
         "signature": "ce847a0589d9a70940cdd564a48dee086d6b36144db1c29b1e6e57655ce045c9",
         "affectsGlobalScope": true
       },
-      "./node_modules/reflect-metadata/index.d.ts": {
-        "version": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
-        "signature": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
-        "affectsGlobalScope": true
-      },
       "./node_modules/@types/node/globals.d.ts": {
         "version": "583b4bd4e441916be4bf152ee323c4ffa6e178fd25df2ee2215ef05c7feb5ad4",
         "signature": "583b4bd4e441916be4bf152ee323c4ffa6e178fd25df2ee2215ef05c7feb5ad4",
@@ -380,6 +375,21 @@
         "version": "9c4c395e927045b324877acdc4bfb95f128f36bc9f073266a2f0342495075a4f",
         "signature": "9c4c395e927045b324877acdc4bfb95f128f36bc9f073266a2f0342495075a4f",
         "affectsGlobalScope": false
+      },
+      "./node_modules/dotenv/types/index.d.ts": {
+        "version": "c9ae0b351a07b52f29a28e869d8c7c8d29743bbb5eeddc7c0b5b2a69a2450528",
+        "signature": "c9ae0b351a07b52f29a28e869d8c7c8d29743bbb5eeddc7c0b5b2a69a2450528",
+        "affectsGlobalScope": false
+      },
+      "./src/load-env.ts": {
+        "version": "ac3da8db0cf51034d792ddc86db6cf883cf5942922079716096dd3cb10192206",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/reflect-metadata/index.d.ts": {
+        "version": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
+        "signature": "8d6d51a5118d000ed3bfe6e1dd1335bebfff3fef23cd2af2f84a24d30f90cc90",
+        "affectsGlobalScope": true
       },
       "./node_modules/@types/bson/index.d.ts": {
         "version": "2d23edce1d4a3b33280970484e17ca87b03e2829d8677ae1501de18269f0498f",
@@ -2877,8 +2887,8 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "0e18e6b06c60a49153ad506812e37da25827c43dd65d08bc919f59cfe65431bb",
-        "signature": "6fbccc30ce6dce3c177ec45755c333ac15f29023c1510b4dd2cad102f70d227d",
+        "version": "03cbf8bfab8833835ae6ef985e1ded9f9b3d4d0acb544b841d996477f88f35b6",
+        "signature": "2046730a30c35734345a869d488e2e3614524d25949e2552e9f231e02dcc2879",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/minimatch/index.d.ts": {
@@ -5195,6 +5205,11 @@
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
+      "./node_modules/dotenv/types/index.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
       "./node_modules/eventemitter3/index.d.ts": [
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
@@ -6994,9 +7009,15 @@
         "./node_modules/mongoose/index.d.ts",
         "./node_modules/reflect-metadata/index.d.ts",
         "./node_modules/type-graphql/dist/index.d.ts",
+        "./src/load-env.ts",
         "./src/resolvers/todo-resolver.ts",
         "./src/resolvers/user-resolver.ts",
         "./src/utils/db.ts"
+      ],
+      "./src/load-env.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/dotenv/types/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
       ],
       "./src/middlewares/auth.ts": [
         "./node_modules/@types/jsonwebtoken/index.d.ts",
@@ -9132,6 +9153,11 @@
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
       ],
+      "./node_modules/dotenv/types/index.d.ts": [
+        "./node_modules/@types/mongoose/index.d.ts",
+        "./node_modules/@types/node/index.d.ts",
+        "./node_modules/mongoose/index.d.ts"
+      ],
       "./node_modules/eventemitter3/index.d.ts": [
         "./node_modules/@types/mongoose/index.d.ts",
         "./node_modules/mongoose/index.d.ts"
@@ -10902,6 +10928,7 @@
       ],
       "./src/index.ts": [
         "./node_modules/reflect-metadata/index.d.ts",
+        "./src/load-env.ts",
         "./src/utils/db.ts"
       ],
       "./src/middlewares/auth.ts": [
@@ -11253,6 +11280,7 @@
       "./node_modules/class-validator/types/validation/validator.d.ts",
       "./node_modules/class-validator/types/validation/validatorconstraintinterface.d.ts",
       "./node_modules/class-validator/types/validation/validatoroptions.d.ts",
+      "./node_modules/dotenv/types/index.d.ts",
       "./node_modules/eventemitter3/index.d.ts",
       "./node_modules/form-data/index.d.ts",
       "./node_modules/graphql-extensions/dist/index.d.ts",
@@ -11542,6 +11570,7 @@
       "./src/entity/user.ts",
       "./src/env.d.ts",
       "./src/index.ts",
+      "./src/load-env.ts",
       "./src/middlewares/auth.ts",
       "./src/models/todo.ts",
       "./src/models/user.ts",

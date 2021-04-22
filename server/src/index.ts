@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "./load-env";
 import "reflect-metadata";
 import "./utils/db";
 import express, { Response } from "express";
