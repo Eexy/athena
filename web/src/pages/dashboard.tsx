@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { TodoInputBar } from "../components/todo-input-bar";
 import { TodoList } from "../components/todo-list";
-import { useTodosQuery } from "../generated/graphql";
+import { useCreateTodoMutation, useTodosQuery } from "../generated/graphql";
 
 interface DashboardProps {
   isAuth: boolean;
@@ -11,13 +11,14 @@ interface DashboardProps {
 export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
   const history = useHistory();
   const [result, queryTodos] = useTodosQuery();
+  const [, addTodo] = useCreateTodoMutation();
 
   // if user is not authentified redirect to login page
   if (!isAuth) {
     history.push("/login");
   }
 
-  const { data, error, fetching } = result;
+  const { error, fetching } = result;
 
   if (fetching) {
     return <div>Loading todo list</div>;
@@ -27,8 +28,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
     history.push("/login");
   }
 
-  const addTodoCallback = (desc: string) => {
-    console.log(desc);
+  const addTodoCallback = async (desc: string) => {
+    const res = await addTodo({desc});
+    queryTodos();
+    console.log(result);
   }
 
   return (

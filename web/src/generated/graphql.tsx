@@ -146,7 +146,11 @@ export type RegisterMutation = (
   ) }
 );
 
-export type TodosQueryVariables = Exact<{ [key: string]: never; }>;
+export type TodosQueryVariables = Exact<{
+  skip?: Maybe<Scalars['Float']>;
+  limit?: Maybe<Scalars['Float']>;
+  completed?: Maybe<Scalars['Boolean']>;
+}>;
 
 
 export type TodosQuery = (
@@ -205,8 +209,8 @@ export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
 };
 export const TodosDocument = gql`
-    query Todos {
-  todos {
+    query Todos($skip: Float, $limit: Float, $completed: Boolean) {
+  todos(skip: $skip, limit: $limit, completed: $completed) {
     id
     desc
     completed
