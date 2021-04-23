@@ -1,0 +1,7 @@
+query Todos($limit: Float, $skip: Float, $completed: Boolean){
+  todos{
+    id,
+    desc,
+    completed
+  }
+}

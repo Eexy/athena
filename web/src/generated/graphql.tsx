@@ -125,6 +125,21 @@ export type RegisterMutation = (
   ) }
 );
 
+export type TodosQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Float']>;
+  skip?: Maybe<Scalars['Float']>;
+  completed?: Maybe<Scalars['Boolean']>;
+}>;
+
+
+export type TodosQuery = (
+  { __typename?: 'Query' }
+  & { todos: Array<(
+    { __typename?: 'Todo' }
+    & Pick<Todo, 'id' | 'desc' | 'completed'>
+  )> }
+);
+
 
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
@@ -149,4 +164,17 @@ export const RegisterDocument = gql`
 
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
+};
+export const TodosDocument = gql`
+    query Todos($limit: Float, $skip: Float, $completed: Boolean) {
+  todos {
+    id
+    desc
+    completed
+  }
+}
+    `;
+
+export function useTodosQuery(options: Omit<Urql.UseQueryArgs<TodosQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<TodosQuery>({ query: TodosDocument, ...options });
 };

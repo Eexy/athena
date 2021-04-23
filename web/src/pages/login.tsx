@@ -22,7 +22,7 @@ export const Login: React.FC<LoginProps> = () => {
     }
 
     if(data?.login.ok){
-      history.push("/");
+      history.push("/dashboard");
     }
   } 
 

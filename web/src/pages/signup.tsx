@@ -21,7 +21,7 @@ export const Signup: React.FC<SignupProps> = () => {
     }
 
     if(data?.register.ok){
-      history.push("/");
+      history.push("/dashboard");
     }
   } 
 
