@@ -1,29 +1,28 @@
-import { Col, Row, Card, Form, Input, Divider, Button } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Col, Row, Card, Form, Input, Divider, Button, Alert } from "antd";
+import { UserOutlined, KeyOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { useLoginMutation } from "../generated/graphql";
-
 
 interface UserFormProps {
-  type : string;
+  type: string;
+  error?: string;
+  handleFormFinish: (email: string, password: string) => Promise<void>;
 }
 
-export const UserForm: React.FC<UserFormProps>= ({type}) => {
-  const email: string = "test2@gmail.com";
-  const password:string = "123";
-  
-  const [, login] = useLoginMutation();
-
-  const log = async () => {
-    const res = await login({email, password});
-    console.log(res.data?.login)
-  }
-
+export const UserForm: React.FC<UserFormProps> = ({
+  type,
+  error,
+  handleFormFinish,
+}) => {
   return (
     <Row justify="center">
       <Col>
         <Card title={type === "login" ? "Login" : "Signup"}>
-          <Form colon={true} onFinish={log}>
+          <Form
+            colon={true}
+            onFinish={(values) =>
+              handleFormFinish(values.email, values.password)
+            }
+          >
             <Form.Item
               label="Email"
               name="email"
@@ -42,7 +41,7 @@ export const UserForm: React.FC<UserFormProps>= ({type}) => {
               ]}
             >
               <Input.Password
-                prefix={<UserOutlined className="site-form-item-icon" />}
+                prefix={<KeyOutlined className="site-form-item-icon" />}
                 placeholder="password"
               />
             </Form.Item>
@@ -55,10 +54,14 @@ export const UserForm: React.FC<UserFormProps>= ({type}) => {
                 {type === "login" ? "Login" : "Signup"}
               </Button>
             </Form.Item>
+            {error ? <Alert message={error} type="error" /> : null}
           </Form>
+
           <Divider />
           <Link to={type === "login" ? "/signup" : "/login"}>
-            <Button style={{ width: "100%" }}>{type === "login" ? "Signup" : "Login"}</Button>
+            <Button style={{ width: "100%" }}>
+              {type === "login" ? "Signup" : "Login"}
+            </Button>
           </Link>
         </Card>
       </Col>

@@ -107,17 +107,17 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login: (
     { __typename?: 'ConnectResponse' }
-    & Pick<ConnectResponse, 'ok'>
+    & Pick<ConnectResponse, 'ok' | 'error'>
   ) }
 );
 
-export type Unnamed_1_MutationVariables = Exact<{
+export type RegisterMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
 
-export type Unnamed_1_Mutation = (
+export type RegisterMutation = (
   { __typename?: 'Mutation' }
   & { register: (
     { __typename?: 'ConnectResponse' }
@@ -130,6 +130,7 @@ export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     ok
+    error
   }
 }
     `;
@@ -137,8 +138,8 @@ export const LoginDocument = gql`
 export function useLoginMutation() {
   return Urql.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
 };
-export const Document = gql`
-    mutation ($email: String!, $password: String!) {
+export const RegisterDocument = gql`
+    mutation Register($email: String!, $password: String!) {
   register(email: $email, password: $password) {
     ok
     error
@@ -146,6 +147,6 @@ export const Document = gql`
 }
     `;
 
-export function useMutation() {
-  return Urql.useMutation<Mutation, MutationVariables>(Document);
+export function useRegisterMutation() {
+  return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
 };
