@@ -14,7 +14,7 @@ export const App = () => {
   return (
     <Router>
       <header style={{ boxShadow: "0 2px 8px #f0f1f2" }}>
-        <Navbar />
+        <Navbar isAuth={isAuth} setAuth={setAuth}/>
       </header>
 
       <Switch>

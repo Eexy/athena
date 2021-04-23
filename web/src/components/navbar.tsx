@@ -3,9 +3,12 @@ import Title from "antd/lib/typography/Title";
 import { NavbarMenu } from "./navbar-menu";
 import {Link} from "react-router-dom";
 
-interface NavbarProps{}
+interface NavbarProps{
+  isAuth: boolean;
+  setAuth(value: boolean): void;
+}
 
-export const Navbar: React.FC<NavbarProps> = () => {
+export const Navbar: React.FC<NavbarProps> = ({isAuth, setAuth}) => {
   return (
     <nav className="navbar">
       <Row style={{ padding: "0.8rem" }} justify="space-between">
@@ -17,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           </Link>
         </Col>
         <Col>
-          <NavbarMenu />
+          <NavbarMenu isAuth={isAuth} setAuth={setAuth}/>
         </Col>
       </Row>
     </nav>

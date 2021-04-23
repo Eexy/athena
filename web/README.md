@@ -8,14 +8,14 @@
 - [ ] pages
   - [ ] Home
   - [ ] dashboard
-  - [ ] login
-  - [ ] signup
+  - [x] login
+  - [x] signup
 - [ ] components
-  - [ ] navbar
-    - [ ] change if connected
-  - [ ] login/signup form
-  - [ ] navbar-menu
-    - [ ] change on connect
+  - [x] navbar
+    - [x] change if connected
+  - [x] login/signup form
+  - [x] navbar-menu
+    - [x] change on connect
   - [ ] todo
   - [ ] todolist
-- [ ] configure urql client
+- [x] configure urql client

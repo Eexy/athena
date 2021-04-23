@@ -1,14 +1,45 @@
 import { useMediaQuery } from "react-responsive";
 import { Row, Button } from "antd";
 import { Link } from "react-router-dom";
+import { useLogoutMutation } from "../generated/graphql";
 
-interface NavbarMenuProps{}
+interface NavbarMenuProps {
+  isAuth: boolean;
+  setAuth(value: boolean): void;
+}
 
-export const NavbarMenu: React.FC<NavbarMenuProps> = () => {
+export const NavbarMenu: React.FC<NavbarMenuProps> = ({ isAuth, setAuth }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 350px)" });
+  const [,logout] = useLogoutMutation();
 
-  return (
-    <div className="menu">
+  const handleLogoutButton = async () => {
+    await logout();
+    setAuth(false);
+  }
+
+  const authenticatedMenu = () => {
+    return (
+      <Row>
+        <Link to="/dashboard">
+          <Button
+            type="primary"
+            style={isSmallScreen ? {} : { marginRight: "0.8rem" }}
+            className="dashboard-btn"
+          >
+            Dashboard
+          </Button>
+        </Link>
+        {isSmallScreen ? null : (
+          <Link to="/" >
+            <Button onClick={handleLogoutButton}>Logout</Button>
+          </Link>
+        )}
+      </Row>
+    );
+  };
+
+  const menu = () => {
+    return (
       <Row>
         <Link to="/login">
           <Button
@@ -25,6 +56,8 @@ export const NavbarMenu: React.FC<NavbarMenuProps> = () => {
           </Link>
         )}
       </Row>
-    </div>
-  );
+    );
+  };
+
+  return <div className="menu">{isAuth ? authenticatedMenu() : menu()}</div>;
 };
