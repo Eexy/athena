@@ -39,7 +39,8 @@ export class UserResolver {
     try {
       const user = await UModel.findUser(email, password);
       loginResponse.ok = true;
-      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
+      loginResponse.token = generateAuthToken({ id: user.id, date: Date.now() });
+      // sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
     } catch (e) {
       loginResponse.error = e.message;
     }
@@ -107,7 +108,7 @@ export class UserResolver {
     try {
       await user.save();
       registerResponse.ok = true;
-      sendToken(res, generateAuthToken({ id: user.id, date: Date.now() }));
+      registerResponse.token = generateAuthToken({ id: user.id, date: Date.now() });
     } catch (e) {
       if (e.message.includes("`password` is required")) {
         registerResponse.error = "password is required";

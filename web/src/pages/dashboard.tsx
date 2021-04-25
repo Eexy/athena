@@ -31,6 +31,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
   }
 
   if (error) {
+    console.log(error);
     history.push("/login");
   }
 
