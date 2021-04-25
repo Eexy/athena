@@ -10,6 +10,7 @@
   - [x] dashboard
   - [x] login
   - [x] signup
+  - [ ] me
 - [x] components
   - [x] navbar
     - [x] change if connected
@@ -22,3 +23,4 @@
 - [x] configure urql client
 - [ ] clean code
 - [ ] change login system
+- [ ] change design
