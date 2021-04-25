@@ -6,16 +6,15 @@ import { User } from "../models/user";
 import {Payload} from "../utils/generate-auth-token";
 
 export const auth : MiddlewareFn<Context> = async ({context}, next) => {
-  const authCookie = context.req.cookies.jid;
-  console.log(context.req.headers);
-  console.log(context.req.cookies);
-  console.log(context.req.signedCookies);
-  if(!authCookie){
+  const authorization = context.req.headers["authorization"];
+
+  if(!authorization){
     throw new Error("not authenticated");
   }
 
   try{
-    const payload: any = verify(authCookie, process.env.JWT_KEY!);
+    const token = authorization.split(" ")[1];
+    const payload: any = verify(token, process.env.JWT_KEY!);
     const user = await User.findById(payload.id);
 
     if(!user){
