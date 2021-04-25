@@ -6,9 +6,10 @@ import { useHistory } from "react-router";
 
 interface SignupProps {
   setAuth(value: boolean): void;
+  setCookie(value: string): void;
 }
 
-export const Signup: React.FC<SignupProps> = ({setAuth}) => {
+export const Signup: React.FC<SignupProps> = ({setAuth, setCookie}) => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [, register] = useRegisterMutation();
@@ -27,6 +28,7 @@ export const Signup: React.FC<SignupProps> = ({setAuth}) => {
     }
 
     if(data?.register.ok){
+      setCookie(data.register.token!);
       setAuth(true);
       history.push("/dashboard");
     }

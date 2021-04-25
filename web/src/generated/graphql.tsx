@@ -18,6 +18,7 @@ export type ConnectResponse = {
   __typename?: 'ConnectResponse';
   ok: Scalars['Boolean'];
   error?: Maybe<Scalars['String']>;
+  token?: Maybe<Scalars['String']>;
 };
 
 export type Mutation = {
@@ -130,7 +131,7 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login: (
     { __typename?: 'ConnectResponse' }
-    & Pick<ConnectResponse, 'ok' | 'error'>
+    & Pick<ConnectResponse, 'ok' | 'error' | 'token'>
   ) }
 );
 
@@ -152,7 +153,7 @@ export type RegisterMutation = (
   { __typename?: 'Mutation' }
   & { register: (
     { __typename?: 'ConnectResponse' }
-    & Pick<ConnectResponse, 'ok' | 'error'>
+    & Pick<ConnectResponse, 'ok' | 'error' | 'token'>
   ) }
 );
 
@@ -213,6 +214,7 @@ export const LoginDocument = gql`
   login(email: $email, password: $password) {
     ok
     error
+    token
   }
 }
     `;
@@ -234,6 +236,7 @@ export const RegisterDocument = gql`
   register(email: $email, password: $password) {
     ok
     error
+    token
   }
 }
     `;

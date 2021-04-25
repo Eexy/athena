@@ -1,13 +1,13 @@
+import { CookiesProvider } from "react-cookie";
 import { createClient, Provider } from "urql";
 import { App } from "./App";
 
 const client = createClient({
   url: "https://eexy-athena-api.herokuapp.com/graphql",
-  requestPolicy: 'cache-and-network',
+  requestPolicy: "cache-and-network",
   fetchOptions: () => ({
-    credentials: 'include',
-  })
-
+    credentials: "include",
+  }),
 });
 
 export const Root = () => {

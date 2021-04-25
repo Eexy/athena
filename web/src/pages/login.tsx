@@ -5,9 +5,10 @@ import { useLoginMutation} from "../generated/graphql";
 
 interface LoginProps{
   setAuth(value: boolean): void;
+  setCookie(value: string): void;
 }
 
-export const Login: React.FC<LoginProps> = ({setAuth}) => {
+export const Login: React.FC<LoginProps> = ({setAuth, setCookie}) => {
   const history = useHistory();
   const [error, setError] = useState("");
   const [, login] = useLoginMutation();
@@ -32,6 +33,7 @@ export const Login: React.FC<LoginProps> = ({setAuth}) => {
     }
 
     if(data?.login.ok){
+      setCookie(data.login.token!);
       setAuth(true);
       history.push("/dashboard");
     }
