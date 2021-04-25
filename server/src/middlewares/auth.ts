@@ -7,6 +7,7 @@ import {Payload} from "../utils/generate-auth-token";
 
 export const auth : MiddlewareFn<Context> = async ({context}, next) => {
   const authCookie = context.req.cookies.jid;
+  console.log(context.req.headers);
   if(!authCookie){
     throw new Error("not authenticated");
   }
