@@ -8,9 +8,10 @@ import {useEffect} from "react";
 interface DashboardProps {
   isAuth: boolean;
   setAuth(value: boolean): void;
+  removeCookie(name: string): void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ isAuth, removeCookie }) => {
   const history = useHistory();
   const [result, queryTodos] = useTodosQuery();
   const [, addTodo] = useCreateTodoMutation();
@@ -33,6 +34,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ isAuth }) => {
   if (error) {
     console.log(error);
     history.push("/login");
+    removeCookie("jid");
   }
 
   const addTodoCallback = async (desc: string) => {

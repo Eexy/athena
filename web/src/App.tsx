@@ -9,22 +9,20 @@ import { Dashboard } from "./pages/dashboard";
 import { useState } from "react";
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
-import { setToken } from "./utils/token";
 
 export const App = () => {
   const [isAuth, setAuth] = useState(false);
-  const [cookies, setCookies] = useCookies(['jid']);
+  const [cookies, setCookies, removeCookie] = useCookies(['jid']);
 
   function getCookie(value: string){
     setCookies('jid', value, {path: '/'});
-    setToken(value);
   }
 
   return (
     <CookiesProvider>
       <Router>
         <header style={{ boxShadow: "0 2px 8px #f0f1f2" }}>
-          <Navbar isAuth={isAuth} setAuth={setAuth} />
+          <Navbar isAuth={isAuth} setAuth={setAuth} removeCookie={removeCookie}/>
         </header>
 
         <Switch>
@@ -38,7 +36,7 @@ export const App = () => {
             <Signup setAuth={setAuth} setCookie={getCookie}/>
           </Route>
           <Route exact path="/dashboard">
-            <Dashboard isAuth={isAuth} setAuth={setAuth} />
+            <Dashboard isAuth={isAuth} setAuth={setAuth} removeCookie={removeCookie}/>
           </Route>
         </Switch>
       </Router>

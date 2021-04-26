@@ -6,9 +6,10 @@ import {Link} from "react-router-dom";
 interface NavbarProps{
   isAuth: boolean;
   setAuth(value: boolean): void;
+  removeCookie(name: string): void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({isAuth, setAuth}) => {
+export const Navbar: React.FC<NavbarProps> = ({isAuth, setAuth, removeCookie}) => {
   return (
     <nav className="navbar">
       <Row style={{ padding: "0.8rem" }} justify="space-between">
@@ -20,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({isAuth, setAuth}) => {
           </Link>
         </Col>
         <Col>
-          <NavbarMenu isAuth={isAuth} setAuth={setAuth}/>
+          <NavbarMenu isAuth={isAuth} setAuth={setAuth} removeCookie={removeCookie}/>
         </Col>
       </Row>
     </nav>

@@ -6,14 +6,16 @@ import { useLogoutMutation } from "../generated/graphql";
 interface NavbarMenuProps {
   isAuth: boolean;
   setAuth(value: boolean): void;
+  removeCookie(name: string): void;
 }
 
-export const NavbarMenu: React.FC<NavbarMenuProps> = ({ isAuth, setAuth }) => {
+export const NavbarMenu: React.FC<NavbarMenuProps> = ({ isAuth, setAuth, removeCookie }) => {
   const isSmallScreen = useMediaQuery({ query: "(max-width: 350px)" });
   const [,logout] = useLogoutMutation();
 
   const handleLogoutButton = async () => {
     await logout();
+    removeCookie('jid');
     setAuth(false);
   }
 
