@@ -17,7 +17,6 @@ export const App = () => {
   function getCookie(value: string){
     console.log(value);
     setCookies('jid', value, {path: '/'});
-    console.log(cookies);
   }
 
   return (
