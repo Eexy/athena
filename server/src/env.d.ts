@@ -6,5 +6,6 @@ declare namespace NodeJS{
     ATLAS_PWD: string;
     ATLAS_USER: string;
     ORIGIN: string;
+    SENDGRID_API_KEY: string;
   }
 }

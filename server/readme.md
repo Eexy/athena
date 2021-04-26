@@ -17,6 +17,7 @@
       - [x] timestamp
       - [x] owner
 - [x] implement JWT
+  - [ ] access / refresh token
 - [x] entity
   - [x] user
   - [x] todo
@@ -36,3 +37,4 @@
     - [x] logout
 - [x] create db on atlas
 - [x] deploy on heroku
+- [x] register/cancellation email

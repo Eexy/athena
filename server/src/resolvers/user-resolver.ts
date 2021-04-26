@@ -13,6 +13,7 @@ import { Todo as TModel } from "../models/todo";
 import { generateAuthToken } from "../utils/generate-auth-token";
 import { Context } from "../utils/types";
 import { auth } from "../middlewares/auth";
+import { sendRegistrationEmail } from "../utils/email";
 
 @Resolver(User)
 export class UserResolver {
@@ -111,6 +112,7 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
+      sendRegistrationEmail(user.email);
     } catch (e) {
       if (e.message.includes("`password` is required")) {
         registerResponse.error = "password is required";
