@@ -11,5 +11,6 @@
   - [ ] login / register
 - [ ] components
   - [ ] header
-  - [ ] auth form
+  - [ ] auth form 
+    - [x] validator
   - [ ] todo

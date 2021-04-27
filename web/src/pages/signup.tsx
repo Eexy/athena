@@ -9,8 +9,12 @@ const Signup: React.FC<SignupProps> = ({pageName}) => {
     document.title = `Athena | ${pageName}`;
   }, []);
 
+  const getAuthFormValue = (email: string, password: string) => {
+    console.log({email, password});
+  }
+
   return <div>
-    <AuthForm type="signup"/>
+    <AuthForm type="signup" getAuthFormValue={getAuthFormValue}/>
   </div>;
 };
 
