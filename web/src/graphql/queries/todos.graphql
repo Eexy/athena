@@ -1,7 +1,0 @@
-query Todos($skip: Float, $limit: Float, $completed: Boolean){
-  todos(skip: $skip, limit: $limit, completed: $completed){
-    id,
-    desc,
-    completed
-  }
-}
