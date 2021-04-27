@@ -15,9 +15,15 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
     e.preventDefault();
 
     // check if it's a valid email
-    if(isEmail(email)){
-      getAuthFormValue(email, password);
+    if(!isEmail(email)){
+      return console.log("invalid email");
     }
+
+    if(password !== confirmPassword){
+      return console.log("passwords don't match");
+    }
+
+    return getAuthFormValue(email, password);
   };
 
   const handleEmailChange = (value: string) => {
