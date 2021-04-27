@@ -44,7 +44,7 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
-      res.cookie("jid", loginResponse.token, {httpOnly: true});
+      sendToken(res, loginResponse.token);
     } catch (e) {
       loginResponse.error = e.message;
     }
@@ -116,7 +116,8 @@ export class UserResolver {
         id: user.id,
         date: Date.now(),
       });
-      res.cookie("jid", registerResponse.token, {httpOnly: true});
+      sendToken(res, registerResponse.token);
+      
 
       sendRegistrationEmail(user.email);
     } catch (e) {
