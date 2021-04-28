@@ -111,6 +111,16 @@ export type CreateTodoMutation = (
   ) }
 );
 
+export type DeleteTodoMutationVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type DeleteTodoMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteTodo'>
+);
+
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -177,6 +187,15 @@ export const CreateTodoDocument = gql`
 
 export function useCreateTodoMutation() {
   return Urql.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument);
+};
+export const DeleteTodoDocument = gql`
+    mutation DeleteTodo($id: String!) {
+  deleteTodo(id: $id)
+}
+    `;
+
+export function useDeleteTodoMutation() {
+  return Urql.useMutation<DeleteTodoMutation, DeleteTodoMutationVariables>(DeleteTodoDocument);
 };
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {

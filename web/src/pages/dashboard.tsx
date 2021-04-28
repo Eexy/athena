@@ -28,7 +28,7 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
       <InputTodoBar addTodo={addTodo} />
       {
         todos.data ? 
-          <TodoList todos={todos.data.todos} />
+          <TodoList todos={todos.data.todos} updateTodoList={todoQuery} />
         : null
       }
     </div>

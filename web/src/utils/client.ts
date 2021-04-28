@@ -4,7 +4,7 @@ import { fetchExchange, makeOperation} from "@urql/core";
 
 const client = createClient({
   url: "https://eexy-athena-api.herokuapp.com/graphql",
-  requestPolicy: "network-only",
+  requestPolicy: "cache-and-network",
   exchanges: [
     // https://formidable.com/open-source/urql/docs/advanced/authentication/
     authExchange({
