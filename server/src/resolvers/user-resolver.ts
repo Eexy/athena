@@ -50,13 +50,7 @@ export class UserResolver {
 
   @UseMiddleware(auth)
   @Mutation((_) => Boolean)
-  logout(@Ctx() { res }: Context) {
-    try {
-      res.clearCookie("jid");
-    } catch (e) {
-      throw new Error("Unable to logout");
-    }
-
+  logout() {
     return true;
   }
 

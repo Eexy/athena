@@ -5,17 +5,17 @@ import {verify} from "jsonwebtoken";
 import { User } from "../models/user";
 
 export const auth : MiddlewareFn<Context> = async ({context}, next) => {
-  const cookie = context.req.cookies["jid"];
-  console.log(cookie);
+  const authorization = context.req.headers["authorization"];
 
-  if(!cookie){
+  if(!authorization){
     throw new Error("not authenticated");
   }
 
   try{
-    const payload: any = verify(cookie, process.env.JWT_KEY!);
+    const token = authorization.split(" ")[1];
+    const payload: any = verify(token, process.env.JWT_KEY!);
     const user = await User.findById(payload.id);
-    console.log({user})
+
     if(!user){
       throw new Error("not authenticated");
     }
