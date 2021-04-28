@@ -19,9 +19,9 @@ const Signup: React.FC<SignupProps> = ({pageName}) => {
       const res = await signup({email, password});
       const {data} = res;
 
-      // if(data?.register.token){
-      //   setAuthToken(data.register.token);
-      // }
+      if(data?.register.token){
+        localStorage.setItem('jid',data.register.token);
+      }
     }catch(e){
       console.log(e);
     }

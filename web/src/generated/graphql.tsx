@@ -98,6 +98,19 @@ export type User = {
   email: Scalars['String'];
 };
 
+export type CreateTodoMutationVariables = Exact<{
+  desc: Scalars['String'];
+}>;
+
+
+export type CreateTodoMutation = (
+  { __typename?: 'Mutation' }
+  & { createTodo: (
+    { __typename?: 'Todo' }
+    & Pick<Todo, 'id' | 'desc' | 'completed'>
+  ) }
+);
+
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -138,6 +151,19 @@ export type TodosQuery = (
 );
 
 
+export const CreateTodoDocument = gql`
+    mutation CreateTodo($desc: String!) {
+  createTodo(desc: $desc) {
+    id
+    desc
+    completed
+  }
+}
+    `;
+
+export function useCreateTodoMutation() {
+  return Urql.useMutation<CreateTodoMutation, CreateTodoMutationVariables>(CreateTodoDocument);
+};
 export const LoginDocument = gql`
     mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {

@@ -1,0 +1,7 @@
+mutation CreateTodo($desc: String!){
+  createTodo(desc: $desc){
+    id,
+    desc,
+    completed
+  }
+}
