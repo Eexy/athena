@@ -3,15 +3,15 @@
 ## Todo
 
 - [x] install react-router
-- [ ] install and configure urql
-- [ ] install react-cookie
+- [x] install and configure urql
 - [ ] pages
   - [ ] home
-  - [ ] dashboard
-  - [ ] login / register
-- [ ] components
-  - [ ] header
-  - [ ] auth form 
+  - [x] dashboard
+  - [x] login / register
+- [x] components
+  - [x] header
+  - [x] auth form 
     - [x] validator
-  - [ ] todo
-- [ ] auth
+  - [x] todo
+  - [x] todolist
+- [x] auth

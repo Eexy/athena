@@ -13,7 +13,7 @@ interface TodoListProps {
 
 const TodoList: React.FC<TodoListProps> = ({ todos, updateTodoList }) => {
   return (
-    <ul className="todo-list">
+    <div className="todo-list">
       {todos.map((todo) => (
         <Todo
           key={todo.id}
@@ -23,7 +23,7 @@ const TodoList: React.FC<TodoListProps> = ({ todos, updateTodoList }) => {
           completed={todo.completed}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
