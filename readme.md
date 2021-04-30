@@ -1,7 +1,10 @@
 A simple todo app using react, nodejs and typescript. The app is available [here][1]
 
 ## Ideas
-- [ ] add params to todos like priority levels, date, comments
+- [ ] add params to todos 
+  - [x] priority levels 
+  - [ ] date 
+  - [ ] comments
 - [ ] add possibility to create projects
 - [x] add todo's counter
 - [ ] searchbar
