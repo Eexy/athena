@@ -4,7 +4,7 @@ import { errorExchange, fetchExchange, makeOperation} from "@urql/core";
 import logout from "./logout";
 
 const client = createClient({
-  url: "http://localhost:4000/graphql",
+  url: "https://eexy-athena-api.herokuapp.com/graphql",
   requestPolicy: "cache-and-network",
   exchanges: [
     // https://formidable.com/open-source/urql/docs/advanced/authentication/
