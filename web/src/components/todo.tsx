@@ -1,20 +1,26 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   useUpdateTodoStatusMutation,
   useDeleteTodoMutation,
-} from "../generated/graphql";
-import { Card, Row, Col, Button, Checkbox } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+} from '../generated/graphql';
+import { Card, Row, Col, Button, Checkbox } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 interface TodoProps {
   desc: string;
   id: string;
   completed: boolean;
-  priority: number
+  priority: number;
   updateTodoList(): void;
 }
 
-const Todo: React.FC<TodoProps> = ({ id, desc, completed, priority, updateTodoList }) => {
+const Todo: React.FC<TodoProps> = ({
+  id,
+  desc,
+  completed,
+  priority,
+  updateTodoList,
+}) => {
   const [isCompleted, setCompleted] = useState(completed);
   const [, updateTodoStatus] = useUpdateTodoStatusMutation();
   const [, deleteTodo] = useDeleteTodoMutation();
@@ -39,13 +45,17 @@ const Todo: React.FC<TodoProps> = ({ id, desc, completed, priority, updateTodoLi
   };
 
   return (
-    <div style={{ padding: "0.6rem 0" }}>
+    <div style={{ padding: '0.6rem 0' }}>
       <Card>
-        <Row justify="space-between" align="middle">
+        <Row justify='space-between' align='middle'>
           <Col>
             <Checkbox checked={isCompleted} onChange={handleStatusChange} />
-            <span style={{ paddingLeft: "1rem" }}>{desc}</span>
-            {priority > 0 ? <span style={{paddingLeft: "1.5rem"}}>priority: {priority}</span> : null}
+            <span style={{ paddingLeft: '1rem' }}>{desc}</span>
+            {priority > 0 ? (
+              <span style={{ paddingLeft: '1.5rem' }}>
+                priority: {priority}
+              </span>
+            ) : null}
           </Col>
           <Col>
             <Button onClick={handleDeleteBtn} danger>

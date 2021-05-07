@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useHistory } from "react-router";
-import AuthForm from "../components/auth-form";
-import { useLoginMutation } from "../generated/graphql";
-import PageProps from "../utils/page-props";
-import { Row, Col } from "antd";
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import AuthForm from '../components/auth-form';
+import { useLoginMutation } from '../generated/graphql';
+import PageProps from '../utils/page-props';
+import { Row, Col } from 'antd';
 
 interface SigninProps extends PageProps {
   setAuth(auth: boolean): void;
@@ -23,9 +23,9 @@ const Signin: React.FC<SigninProps> = ({ pageName, setAuth }) => {
       const { data } = res;
 
       if (data?.login.token) {
-        localStorage.setItem("jid", data.login.token);
+        localStorage.setItem('jid', data.login.token);
         setAuth(true);
-        history.push("/dashboard");
+        history.push('/dashboard');
       }
     } catch (e) {
       console.log(e);
@@ -33,9 +33,9 @@ const Signin: React.FC<SigninProps> = ({ pageName, setAuth }) => {
   };
 
   return (
-    <Row justify="center" style={{padding: "1.5rem 0"}}>
+    <Row justify='center' style={{ padding: '1.5rem 0' }}>
       <Col>
-        <AuthForm type="signin" getAuthFormValue={getAuthFormValue} />
+        <AuthForm type='signin' getAuthFormValue={getAuthFormValue} />
       </Col>
     </Row>
   );

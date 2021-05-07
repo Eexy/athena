@@ -1,6 +1,6 @@
-import { MenuOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Col, Row } from "antd";
-import { useMeQuery } from "../generated/graphql";
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Col, Row } from 'antd';
+import { useMeQuery } from '../generated/graphql';
 
 interface DashboardHeaderProps {
   displayMenu: boolean;
@@ -8,17 +8,21 @@ interface DashboardHeaderProps {
   isMobileMenuDisplay: boolean;
 }
 
-const DashboardHeader: React.FC<DashboardHeaderProps> = ({ displayMenu, displayMobileMenu, isMobileMenuDisplay }) => {
+const DashboardHeader: React.FC<DashboardHeaderProps> = ({
+  displayMenu,
+  displayMobileMenu,
+  isMobileMenuDisplay,
+}) => {
   const [me, queryMe] = useMeQuery();
   const handleClick = () => {
     displayMobileMenu(!isMobileMenuDisplay);
-  }
+  };
 
   return (
     <Row
-      justify={displayMenu ? "end" : "space-between"}
-      style={{ paddingBottom: "1rem" }}
-      align="middle"
+      justify={displayMenu ? 'end' : 'space-between'}
+      style={{ paddingBottom: '1rem' }}
+      align='middle'
     >
       {!displayMenu ? (
         <Col>
@@ -27,9 +31,9 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ displayMenu, displayM
           </Button>
         </Col>
       ) : null}
-      <Col className="user">
-        <Row align="middle">
-          <span className="email" style={{ paddingRight: "0.7rem" }}>
+      <Col className='user'>
+        <Row align='middle'>
+          <span className='email' style={{ paddingRight: '0.7rem' }}>
             {me.data?.me.email}
           </span>
           <Avatar size={32} icon={<UserOutlined />} />

@@ -1,8 +1,8 @@
-query Todos{
+query Todos {
   todos {
-    id,
-    desc,
-    completed,
+    id
+    desc
+    completed
     priority
   }
 }

@@ -1,6 +1,6 @@
-import isEmail from "validator/lib/isEmail";
-import { Card, Form, Input, Button, Divider, Typography } from "antd";
-import { Link } from "react-router-dom";
+import isEmail from 'validator/lib/isEmail';
+import { Card, Form, Input, Button, Divider, Typography } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
@@ -22,10 +22,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
     confirmPassword,
   }: AuthFormValues) => {
     if (!isEmail(email)) {
-      return console.log("invalid email");
+      return console.log('invalid email');
     }
 
-    if (password !== confirmPassword && type === "signup") {
+    if (password !== confirmPassword && type === 'signup') {
       return console.log("passwords don't match");
     }
 
@@ -33,50 +33,57 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
   };
 
   return (
-    <Card style={{ width: "300px" }}>
-      <Title level={3} style={{ textTransform: "capitalize" }}>
+    <Card style={{ width: '300px' }}>
+      <Title level={3} style={{ textTransform: 'capitalize' }}>
         {type}
       </Title>
       <Divider />
-      <Form className="form" id="auth-form" onFinish={handleFormSubmit} layout="vertical">
+      <Form
+        className='form'
+        id='auth-form'
+        onFinish={handleFormSubmit}
+        layout='vertical'
+      >
         <Form.Item
-          name="email"
-          label="Email : "
-          rules={[{ required: true, message: "Please enter an email" }]}
+          name='email'
+          label='Email : '
+          rules={[{ required: true, message: 'Please enter an email' }]}
         >
-          <Input placeholder="Enter your email" />
+          <Input placeholder='Enter your email' />
         </Form.Item>
         <Form.Item
-          name="password"
-          label="Password : "
-          rules={[{ required: true, message: "Please enter password" }]}
+          name='password'
+          label='Password : '
+          rules={[{ required: true, message: 'Please enter password' }]}
         >
-          <Input.Password placeholder="Enter your password" />
+          <Input.Password placeholder='Enter your password' />
         </Form.Item>
-        {type === "signup" ? (
+        {type === 'signup' ? (
           <Form.Item
-            name="confirmPassword"
-            label="Confirm your password :"
+            name='confirmPassword'
+            label='Confirm your password :'
             rules={[
-              { required: true, message: "You need to confirm your password" },
+              { required: true, message: 'You need to confirm your password' },
             ]}
           >
-            <Input.Password placeholder="Confirm your password" />
+            <Input.Password placeholder='Confirm your password' />
           </Form.Item>
         ) : null}
         <Form.Item>
           <Button
-            htmlType="submit"
-            style={{ textTransform: "capitalize", width: "100%" }}
-            type="primary"
+            htmlType='submit'
+            style={{ textTransform: 'capitalize', width: '100%' }}
+            type='primary'
           >
             {type}
           </Button>
         </Form.Item>
       </Form>
       <Divider />
-      <Link to={type === "signup" ? "/signin" : "/signup"}>
-        <Button style={{width: "100%"}}>{type === "signup" ? "Signin" : "Signup"}</Button>
+      <Link to={type === 'signup' ? '/signin' : '/signup'}>
+        <Button style={{ width: '100%' }}>
+          {type === 'signup' ? 'Signin' : 'Signup'}
+        </Button>
       </Link>
     </Card>
   );

@@ -1,13 +1,13 @@
-import { Menu } from "antd";
-import { Link } from "react-router-dom";
-import { ExportOutlined, HomeOutlined } from "@ant-design/icons";
-import logout from "../utils/logout";
-import { useState } from "react";
+import { Menu } from 'antd';
+import { Link } from 'react-router-dom';
+import { ExportOutlined, HomeOutlined } from '@ant-design/icons';
+import logout from '../utils/logout';
+import { useState } from 'react';
 
 interface MobileMenuProps {}
 
 const MobileMenu: React.FC<MobileMenuProps> = () => {
-  const [current, setCurrent] = useState("dashboard");
+  const [current, setCurrent] = useState('dashboard');
 
   const handleLogoutClick = () => {
     logout();
@@ -18,19 +18,19 @@ const MobileMenu: React.FC<MobileMenuProps> = () => {
   };
 
   return (
-    <div className="mobile-menu" style={{ flex: 1 }}>
+    <div className='mobile-menu' style={{ flex: 1 }}>
       <Menu
-        style={{ border: "none" }}
+        style={{ border: 'none' }}
         onClick={handleMenuClick}
         selectedKeys={[current]}
         defaultSelectedKeys={[current]}
       >
-        <Menu.Item icon={<HomeOutlined />} key="dashboard">
-          <Link to="/dashboard">Dashboard</Link>
+        <Menu.Item icon={<HomeOutlined />} key='dashboard'>
+          <Link to='/dashboard'>Dashboard</Link>
         </Menu.Item>
         <Menu.Item
           icon={<ExportOutlined />}
-          key="logout"
+          key='logout'
           onClick={handleLogoutClick}
         >
           Logout

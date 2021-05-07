@@ -1,8 +1,8 @@
-mutation CreateTodo($desc: String!, $priority: Float){
-  createTodo(desc: $desc, priority: $priority){
-    id,
-    desc,
-    completed,
+mutation CreateTodo($desc: String!, $priority: Float) {
+  createTodo(desc: $desc, priority: $priority) {
+    id
+    desc
+    completed
     priority
   }
 }

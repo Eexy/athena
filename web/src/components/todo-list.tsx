@@ -1,4 +1,4 @@
-import Todo from "./todo";
+import Todo from './todo';
 
 interface ITodo {
   desc: string;
@@ -14,7 +14,7 @@ interface TodoListProps {
 
 const TodoList: React.FC<TodoListProps> = ({ todos, updateTodoList }) => {
   return (
-    <div className="todo-list">
+    <div className='todo-list'>
       {todos.map((todo) => (
         <Todo
           key={todo.id}

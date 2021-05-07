@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import PageProps from "../utils/page-props";
+import { useEffect } from 'react';
+import PageProps from '../utils/page-props';
 
 interface HomeProps extends PageProps {}
 

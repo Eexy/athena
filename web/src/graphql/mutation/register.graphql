@@ -1,7 +1,7 @@
-mutation Register($email: String!, $password: String!){
-  register(email: $email, password: $password){
-    ok,
-    token,
+mutation Register($email: String!, $password: String!) {
+  register(email: $email, password: $password) {
+    ok
+    token
     error
   }
 }
