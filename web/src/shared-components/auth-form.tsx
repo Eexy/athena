@@ -1,3 +1,4 @@
+import React from 'react';
 import isEmail from 'validator/lib/isEmail';
 import { Card, Form, Input, Button, Divider, Typography } from 'antd';
 import { Link } from 'react-router-dom';
@@ -39,41 +40,41 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, getAuthFormValue }) => {
       </Title>
       <Divider />
       <Form
-        className='form'
-        id='auth-form'
+        className="form"
+        id="auth-form"
         onFinish={handleFormSubmit}
-        layout='vertical'
+        layout="vertical"
       >
         <Form.Item
-          name='email'
-          label='Email : '
+          name="email"
+          label="Email : "
           rules={[{ required: true, message: 'Please enter an email' }]}
         >
-          <Input placeholder='Enter your email' />
+          <Input placeholder="Enter your email" />
         </Form.Item>
         <Form.Item
-          name='password'
-          label='Password : '
+          name="password"
+          label="Password : "
           rules={[{ required: true, message: 'Please enter password' }]}
         >
-          <Input.Password placeholder='Enter your password' />
+          <Input.Password placeholder="Enter your password" />
         </Form.Item>
         {type === 'signup' ? (
           <Form.Item
-            name='confirmPassword'
-            label='Confirm your password :'
+            name="confirmPassword"
+            label="Confirm your password :"
             rules={[
               { required: true, message: 'You need to confirm your password' },
             ]}
           >
-            <Input.Password placeholder='Confirm your password' />
+            <Input.Password placeholder="Confirm your password" />
           </Form.Item>
         ) : null}
         <Form.Item>
           <Button
-            htmlType='submit'
+            htmlType="submit"
             style={{ textTransform: 'capitalize', width: '100%' }}
-            type='primary'
+            type="primary"
           >
             {type}
           </Button>

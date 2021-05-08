@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { useMediaQuery } from 'react-responsive';
-import { AuthContext } from '../context/auth-context';
+import  AuthContext  from '../context/auth-context';
 
 interface HeaderMenuProps {
 }

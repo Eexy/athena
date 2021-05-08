@@ -1,15 +1,16 @@
-import { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import AuthForm from '../components/auth-form';
-import { useLoginMutation } from '../generated/graphql';
-import PageProps from '../scripts/page-props';
 import { Row, Col } from 'antd';
-import { AuthContext } from '../context/auth-context';
+import AuthForm from '../../shared-components/auth-form';
+import { useLoginMutation } from '../../generated/graphql';
+import AuthContext from '../../context/auth-context';
+import Header from '../../shared-components/header';
+import { PageProps } from '../../utils/types';
 
 interface SigninProps extends PageProps {}
 
-const Signin: React.FC<SigninProps> = ({ pageName}) => {
-  const {auth,setAuth} = useContext(AuthContext);  
+const Signin: React.FC<SigninProps> = ({ pageName }) => {
+  const { setAuth } = useContext(AuthContext);
   const history = useHistory();
   const [, login] = useLoginMutation();
 
@@ -33,11 +34,14 @@ const Signin: React.FC<SigninProps> = ({ pageName}) => {
   };
 
   return (
-    <Row justify='center' style={{ padding: '1.5rem 0' }}>
-      <Col>
-        <AuthForm type='signin' getAuthFormValue={getAuthFormValue} />
-      </Col>
-    </Row>
+    <>
+      <Header />
+      <Row justify="center" style={{ padding: '1.5rem 0' }}>
+        <Col>
+          <AuthForm type="signin" getAuthFormValue={getAuthFormValue} />
+        </Col>
+      </Row>
+    </>
   );
 };
 

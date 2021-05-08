@@ -1,50 +1,48 @@
+import React, { useEffect, useMemo, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Header from './components/header';
-import Signin from './pages/signin';
-import Signup from './pages/signup';
-import Home from './pages/home';
 import { Provider } from 'urql';
-import client from './scripts/client';
-import Dashboard from './pages/dashboard';
-import { AuthContext } from './context/auth-context';
-import {useEffect, useMemo, useState } from 'react';
+import client from './utils/client';
+import AuthContext from './context/auth-context';
+import Signin from './pages/signin/signin';
+import Signup from './pages/signup/signup';
+import Home from './pages/home/home';
+import Dashboard from './pages/dashboard/dashboard';
+import Logout from './pages/logout/logout';
 
 function App() {
   const [auth, setAuth] = useState(false);
 
-  const value =  useMemo(() => ({auth, setAuth}), [auth, setAuth]);
+  const value = useMemo(() => ({ auth, setAuth }), [auth, setAuth]);
 
   useEffect(() => {
-    if(localStorage.getItem('jid')){
+    if (localStorage.getItem('jid')) {
       setAuth(true);
     }
-    console.log(auth);
   }, [auth]);
 
   return (
     <Provider value={client}>
       <Router>
-        <div className='App'>
-
+        <div className="App">
           <AuthContext.Provider value={value}>
             <Switch>
-              <Route exact path='/'>
-                <Header/>
-                <Home pageName='Athena' />
+              <Route exact path="/">
+                <Home pageName="Athena" />
               </Route>
-              <Route exact path='/signin'>
-                <Header />
-                <Signin pageName='Signin' />
+              <Route exact path="/signin">
+                <Signin pageName="Signin" />
               </Route>
-              <Route exact path='/signup'>
-                <Header/>
-                <Signup pageName='Signup' />
+              <Route exact path="/signup">
+                <Signup pageName="Signup" />
               </Route>
-              <Route exact path='/dashboard'>
-                <Dashboard pageName='Dashboard' />
+              <Route exact path="/dashboard">
+                <Dashboard pageName="Dashboard" />
+              </Route>
+              <Route exact path="/logout">
+                <Logout />
               </Route>
             </Switch>
-            </AuthContext.Provider>
+          </AuthContext.Provider>
         </div>
       </Router>
     </Provider>

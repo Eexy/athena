@@ -1,11 +1,11 @@
 import { createClient } from 'urql';
 import { authExchange } from '@urql/exchange-auth';
 import { errorExchange, fetchExchange, makeOperation } from '@urql/core';
-import logout from './logout';
+import logout from '../scripts/logout';
 
 const client = createClient({
   url: 'https://eexy-athena-api.herokuapp.com/graphql',
-  requestPolicy: 'cache-and-network',
+  requestPolicy: 'cache-only',
   exchanges: [
     // https://formidable.com/open-source/urql/docs/advanced/authentication/
     errorExchange({
