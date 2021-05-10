@@ -9,7 +9,7 @@ const Sidebar: React.FC = () => {
         padding: '1rem 0',
         width: '230px',
         borderRight: '1px solid #f0f0f0',
-        height: '100%',
+        minHeight: '100%'
       }}
     >
       <Title level={3} style={{ paddingLeft: '1.5rem' }}>

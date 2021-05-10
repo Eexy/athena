@@ -26,10 +26,10 @@ const Dashboard: React.FC<DashboardProps> = ({ pageName }) => {
   }, [isLargeScreen]);
 
   return (
-    <div className="dashboard" style={{ height: '100%' }}>
-      <Row className="dashboard" style={{ height: '100%' }}>
+    <div className="dashboard" style={{ height: '100%', minHeight: '100%' }}>
+      <Row className="dashboard" style={{ minHeight: '100%' }}>
         {isLargeScreen ? (
-          <Col style={{ height: '100%' }}>
+          <Col style={{ minHeight: '100%' }}>
             <Sidebar />
           </Col>
         ) : null}

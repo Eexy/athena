@@ -9,20 +9,29 @@ import {
   useCreateTodoMutation,
   useTodosQuery,
 } from '../../../generated/graphql';
+import { PlusOutlined } from '@ant-design/icons';
 
 const Editor: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [res, todosQuery] = useTodosQuery();
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [, createTodo] = useCreateTodoMutation();
+  const [incompleted, setIncompleted] = useState(0);
 
   const { data, fetching } = res;
 
+  // update todos when we get them from the server
   useEffect(() => {
     if (data) {
       setTodos([...todos, ...data.todos]);
     }
   }, [data]);
+
+  // Calculate number of todo incompleted
+  useEffect(() => {
+    const n = todos.filter(todo => todo.completed !== true).length;
+    setIncompleted(n);
+  }, [todos]);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -64,8 +73,9 @@ const Editor: React.FC = () => {
       <Title level={1} style={{ margin: 0 }}>
         Dashboard
       </Title>
-      <TodoCounter incompleted={1} />
+      <TodoCounter incompleted={incompleted} />
       <Button type="primary" onClick={showModal}>
+        <PlusOutlined />
         Add Todo
       </Button>
       <AddTodoModal

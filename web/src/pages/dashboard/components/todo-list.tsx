@@ -1,4 +1,6 @@
+import { Image } from 'antd';
 import { ITodo } from '../../../utils/types';
+import EmptyTodoList from './empty-todolist';
 import Todo from './todo';
 
 interface TodoListProps {
@@ -7,11 +9,15 @@ interface TodoListProps {
   updateTodo(id: string, completed: boolean): void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todos, deleteTodo, updateTodo }) => {
+const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  deleteTodo,
+  updateTodo,
+}) => {
   return (
-    <div className="todolist" style={{paddingTop: '1rem'}}>
+    <div className="todolist" style={{ paddingTop: '1rem' }}>
       {todos.length === 0 ? (
-        <p>no todo</p>
+        <EmptyTodoList />
       ) : (
         todos.map((todo) => (
           <Todo

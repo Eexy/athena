@@ -1,5 +1,7 @@
 import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import { Row, Col, Button, Avatar } from 'antd';
+import { useEffect, useState } from 'react';
+import { useMeQuery } from '../../../generated/graphql';
 
 interface DashboardHeaderProps {
   displayMenuIcon: boolean;
@@ -12,6 +14,16 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   hideMobileMenu,
   setMobileMenuVisibility,
 }) => {
+  const [me, meQuery] = useMeQuery();
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const { data } = me;
+    if (data) {
+      setEmail(data.me.email);
+    }
+  }, [me]);
+
   const handleClick = () => {
     setMobileMenuVisibility(!hideMobileMenu);
   };
@@ -30,7 +42,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           <div className="user">
             <Row align="middle">
               <span className="user-email" style={{ marginRight: '0.5rem' }}>
-                test@gmail.com
+                {email}
               </span>
               <Avatar size={32} icon={<UserOutlined />} />
             </Row>

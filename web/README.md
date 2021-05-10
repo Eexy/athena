@@ -15,6 +15,6 @@
   - [x] todo
   - [x] todolist
 - [x] auth
-- [ ] use auth context
+- [x] use auth context
 - [ ] clean up code / components
-- [ ] clean up folder structure ??
+- [x] clean up folder structure ??
