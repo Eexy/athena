@@ -10,7 +10,7 @@ import AddTodo from '../components/add-todo/add-todo';
 
 const Editor: React.FC = () => {
   const [res, _] = useTodosQuery();
-  const [todos, setTodos] = useState<ITodo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [, createTodo] = useCreateTodoMutation();
   const [incompleted, setIncompleted] = useState(0);
 

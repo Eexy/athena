@@ -1,44 +1,48 @@
-import React, { useState } from 'react';
-import { Input, Button, Space } from 'antd';
+import React from 'react';
+import { Input, Button, Space, Form } from 'antd';
 
 interface AddTodoFormProps {
   hideBox(hide: boolean): void;
-  newTodo(desc: string): void;
+  createNewTodo(desc: string): void;
 }
 
-const AddTodoForm: React.FC<AddTodoFormProps> = ({ hideBox, newTodo }) => {
-  const [todoValue, setTodoValue] = useState('');
+interface TodoFormValue {
+  desc: string;
+}
 
-  const cancel = () => {
-    setTodoValue('');
+const AddTodoForm: React.FC<AddTodoFormProps> = ({
+  hideBox,
+  createNewTodo,
+}) => {
+  const [form] = Form.useForm();
+
+  const closeForm = () => {
+    form.resetFields();
     hideBox(true);
   };
 
-  const add = () => {
-    newTodo(todoValue);
-    setTodoValue('');
-    hideBox(true);
-  };
-
-  const handleInputChange = (e: any) => {
-    setTodoValue(e.target.value);
+  const handleFinish = (value: TodoFormValue) => {
+    createNewTodo(value.desc);
+    closeForm();
   };
 
   return (
-    <div style={{ padding: 0 }}>
-      <Input
-        placeholder="What you gonna do ?"
-        value={todoValue}
-        onChange={handleInputChange}
-      />
-      <Space size="middle" style={{ paddingTop: 8 }}>
-        <Button onClick={add} type="primary">
-          Add
-        </Button>
-        <Button onClick={cancel} danger>
-          cancel
-        </Button>
-      </Space>
+    <div>
+      <Form form={form} onFinish={handleFinish}>
+        <Form.Item name="desc" rules={[{ required: true }]}>
+          <Input placeholder="What you gonna do ?" />
+        </Form.Item>
+        <Form.Item>
+          <Space size="middle">
+            <Button htmlType="submit" type="primary">
+              Add
+            </Button>
+            <Button htmlType="button" onClick={closeForm} danger>
+              cancel
+            </Button>
+          </Space>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

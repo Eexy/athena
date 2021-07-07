@@ -1,25 +1,27 @@
-import "./load-env";
-import "reflect-metadata";
-import "./utils/db";
-import express, { Response } from "express";
-import cors from "cors";
-import { buildSchema } from "type-graphql";
-import { TodoResolver } from "./resolvers/todo-resolver";
-import { ApolloServer } from "apollo-server-express";
-import { UserResolver } from "./resolvers/user-resolver";
-import cookieParser from "cookie-parser";
+import './load-env';
+import 'reflect-metadata';
+import './utils/db';
+import express, { Response } from 'express';
+import cors from 'cors';
+import { buildSchema } from 'type-graphql';
+import { TodoResolver } from './resolvers/todo-resolver';
+import { ApolloServer } from 'apollo-server-express';
+import { UserResolver } from './resolvers/user-resolver';
+import cookieParser from 'cookie-parser';
 
 const main = async () => {
   const PORT = parseInt(process.env.PORT!) || 4000;
   const app: express.Express = express();
 
-  app.use(cors({
-    origin: ["http://localhost:3000", process.env.ORIGIN!],
-    credentials: true
-  }));
+  app.use(
+    cors({
+      origin: ['http://localhost:3000', process.env.ORIGIN!],
+      credentials: true,
+    })
+  );
   app.use(cookieParser());
 
-  app.get("/", (_, res: Response) => {
+  app.get('/', (_, res: Response) => {
     res
       .status(200)
       .send(

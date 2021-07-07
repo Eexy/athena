@@ -3,7 +3,7 @@ import EmptyTodoList from './empty-todolist';
 import Todo from '../todo/todo';
 
 interface TodoListProps {
-  todos: ITodo[];
+  todos: Todo[];
   deleteTodo(id: string): void;
   updateTodo(id: string, completed: boolean): void;
 }

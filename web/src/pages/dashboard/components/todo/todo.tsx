@@ -6,7 +6,7 @@ import {
   useUpdateTodoStatusMutation,
 } from '../../../../generated/graphql';
 
-interface TodoProps extends ITodo {
+interface TodoProps extends Todo {
   removeTodoFromList(id: string): void;
   updateTodo(id: string, completed: boolean): void;
 }

@@ -20,7 +20,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ createTodo }) => {
   return (
     <div className="add-todo">
       {!boxIsHidden ? (
-        <AddTodoForm hideBox={setBoxIsHidden} newTodo={newTodo} />
+        <AddTodoForm hideBox={setBoxIsHidden} createNewTodo={newTodo} />
       ) : (
         <Button onClick={handleClick}> Add Todo </Button>
       )}
